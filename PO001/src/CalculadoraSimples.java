@@ -2,10 +2,28 @@ import java.util.Scanner;
 
 public class CalculadoraSimples {
 
+    private double adicao(double numero1, double numero2) {
+        return numero1 + numero2;
+    }
+
+    private double subtracao(double numero1, double numero2) {
+        return numero1 - numero2;
+    }
+
+    private double multiplicacao(double numero1, double numero2) {
+        return numero1 * numero2;
+    }
+
+    private double divisao(double numero1, double numero2) {
+        return numero1 / numero2;
+    }
+
     public static void main(String[] args) {
     	double numero1, numero2, resultado;
     	
         Scanner scanner = new Scanner(System.in);
+
+        CalculadoraSimples calculadora = new CalculadoraSimples();
 
         System.out.print("Digite o primeiro número: ");
         numero1 = scanner.nextDouble();
@@ -25,17 +43,17 @@ public class CalculadoraSimples {
 
         switch (escolha) {
             case 1:
-                resultado = numero1 + numero2;
+                resultado = calculadora.adicao(numero1, numero2);
                 break;
             case 2:
-                resultado = numero1 - numero2;
+                resultado = calculadora.subtracao(numero1, numero2);
                 break;
             case 3:
-                resultado = numero1 * numero2;
+                resultado = calculadora.multiplicacao(numero1, numero2);
                 break;
             case 4:
                 if (numero2 != 0) {
-                    resultado = numero1 / numero2;
+                    resultado = calculadora.divisao(numero1, numero2);
                 } else {
                     System.out.println("Não é possível dividir por zero.");
                     return;
