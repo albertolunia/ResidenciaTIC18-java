@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 public class Adivinhacao {
     public static void main(String[] args) {
-        Random rand = new Random();
+        long seed = System.currentTimeMillis();
+        Random rand = new Random(seed);
         Scanner sc = new Scanner(System.in);
         int numero = rand.nextInt(1, 101);
         int chute = 0;

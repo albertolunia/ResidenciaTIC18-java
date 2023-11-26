@@ -1,0 +1,127 @@
+package p002;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class ManipulaArray {
+    private int[] array;
+    private long seed = System.currentTimeMillis();
+    private Random rand = new Random(seed);
+
+    //main
+    public static void main(String[] args) {;
+        Scanner sc = new Scanner(System.in);
+
+        ManipulaArray ma = new ManipulaArray(sc);
+        System.out.println("Array: " + ma.toString() + "\n");
+        System.out.println("Soma do array: " + ma.somaArray());
+        System.out.println("Maior valor do array: " + ma.maiorValor());
+        System.out.println("Menor valor do array: " + ma.menorValor());
+
+        sc.close();
+    }
+
+    // constructors
+    public ManipulaArray(Scanner sc) {
+        int tamanho;
+        int opcao;
+        
+        System.out.print("Digite o tamanho do array: ");
+        tamanho = sc.nextInt();
+        sc.nextLine();
+        
+        System.out.print("\n1. Digite valores manualmente."+
+        "\n2. Inicie valores aleatoriamente. "+
+        "\nDigite a opcao: ");
+        
+        opcao = sc.nextInt();
+        sc.nextLine();
+
+        if(opcao == 1)
+            iniciarManual(tamanho, sc);
+        else if(opcao == 2)
+            iniciarAleatorio(tamanho, -500, 500);
+        else
+            System.out.println("Opcao invalida!");
+    }
+
+    
+    private void iniciarAleatorio(int tamanho){
+        array = new int[tamanho];
+        
+        for (int i = 0; i < tamanho; i++) {
+            array[i] = rand.nextInt(Integer.MIN_VALUE, Integer.MAX_VALUE);
+        }
+        
+    }
+
+    private void iniciarAleatorio(int tamanho, int min, int max){
+        array = new int[tamanho];
+        
+        for (int i = 0; i < tamanho; i++) {
+            array[i] = rand.nextInt(min, max+1);
+        }
+        
+    }
+    
+    private void iniciarManual(int tamanho, Scanner sc){
+        array = new int[tamanho];
+
+        System.out.println();
+        for (int i = 0; i < tamanho; i++) {
+            System.out.printf("Digite o "+ i+"º valor: ");
+            array[i] = sc.nextInt();
+        }
+        sc.nextLine();
+
+        System.out.println();
+        
+    }
+
+    public int somaArray(){
+        int soma = 0;
+        for (int i = 0; i < array.length; i++) {
+            soma += array[i];
+        }
+        return soma;
+    }
+
+    public int maiorValor(){
+        int maior = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if(array[i] > maior)
+                maior = array[i];
+        }
+        return maior;
+    }
+
+    public int menorValor(){
+        int menor = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if(array[i] < menor)
+                menor = array[i];
+        }
+        return menor;
+    }
+
+    public String toString(){
+        String str = "[";
+        
+        for (int i = 0; i < array.length; i++) {
+            str += array[i];
+            if(i < array.length - 1)
+                str += ", ";
+            else
+                str += "]";
+        }
+
+        return str;
+    }
+
+
+    // getters
+    public int[] getArray() {
+        return array;
+    }
+
+}
