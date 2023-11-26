@@ -7,6 +7,7 @@ public class ConversorMoedas {
         Scanner sc = new Scanner(System.in);
         double valor, cotacao;
         
+        // lendo valores de entrada
         System.out.print("Digite o valor em dolares: ");
         valor = sc.nextDouble();
         System.out.print("Digite a cotacao do dolar: ");
@@ -16,6 +17,7 @@ public class ConversorMoedas {
         sc.close();
     }
 
+    // retorna o valor convertido
     public static double dolarConverter(double valor, double cotacao) {
         return valor * cotacao;
     }

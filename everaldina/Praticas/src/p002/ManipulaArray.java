@@ -5,14 +5,17 @@ import java.util.Scanner;
 
 public class ManipulaArray {
     private int[] array;
+
+    // criando um objeto Random
     private long seed = System.currentTimeMillis();
     private Random rand = new Random(seed);
 
     //main
     public static void main(String[] args) {;
         Scanner sc = new Scanner(System.in);
+        ManipulaArray ma = new ManipulaArray(sc); // criando objeto da classe
 
-        ManipulaArray ma = new ManipulaArray(sc);
+        // imprimindo resultados
         System.out.println("Array: " + ma.toString() + "\n");
         System.out.println("Soma do array: " + ma.somaArray());
         System.out.println("Maior valor do array: " + ma.maiorValor());
@@ -37,6 +40,7 @@ public class ManipulaArray {
         opcao = sc.nextInt();
         sc.nextLine();
 
+        // inciando array de acordo com a opcao
         if(opcao == 1)
             iniciarManual(tamanho, sc);
         else if(opcao == 2)
@@ -45,16 +49,18 @@ public class ManipulaArray {
             System.out.println("Opcao invalida!");
     }
 
-    
+    // iniciando array aleatoriamente sem limites
     private void iniciarAleatorio(int tamanho){
         array = new int[tamanho];
         
+        // limites de int: -2147483648 a 2147483647
         for (int i = 0; i < tamanho; i++) {
             array[i] = rand.nextInt(Integer.MIN_VALUE, Integer.MAX_VALUE);
         }
         
     }
 
+    // iniciando array aleatoriamente com limites
     private void iniciarAleatorio(int tamanho, int min, int max){
         array = new int[tamanho];
         
@@ -64,6 +70,7 @@ public class ManipulaArray {
         
     }
     
+    // iniciando array manualmente
     private void iniciarManual(int tamanho, Scanner sc){
         array = new int[tamanho];
 
@@ -78,6 +85,7 @@ public class ManipulaArray {
         
     }
 
+    // retorna a soma dos valores do array
     public int somaArray(){
         int soma = 0;
         for (int i = 0; i < array.length; i++) {
@@ -86,6 +94,7 @@ public class ManipulaArray {
         return soma;
     }
 
+    // retorna o maior valor do array
     public int maiorValor(){
         int maior = array[0];
         for (int i = 1; i < array.length; i++) {
@@ -95,6 +104,7 @@ public class ManipulaArray {
         return maior;
     }
 
+    // retorna o menor valor do array
     public int menorValor(){
         int menor = array[0];
         for (int i = 1; i < array.length; i++) {
@@ -104,6 +114,7 @@ public class ManipulaArray {
         return menor;
     }
 
+    // retorna o array em formato de string
     public String toString(){
         String str = "[";
         
@@ -114,10 +125,8 @@ public class ManipulaArray {
             else
                 str += "]";
         }
-
         return str;
     }
-
 
     // getters
     public int[] getArray() {
