@@ -15,8 +15,9 @@ public class ManipulaArray {
         Scanner sc = new Scanner(System.in);
         ManipulaArray ma = new ManipulaArray(sc); // criando objeto da classe
 
+
         // imprimindo resultados
-        System.out.println("Array: " + ma.toString() + "\n");
+        System.out.println("\nArray: " + ma.toString() + "\n");
         System.out.println("Soma do array: " + ma.somaArray());
         System.out.println("Maior valor do array: " + ma.maiorValor());
         System.out.println("Menor valor do array: " + ma.menorValor());
@@ -26,27 +27,47 @@ public class ManipulaArray {
 
     // constructors
     public ManipulaArray(Scanner sc) {
-        int tamanho;
-        int opcao;
+        int tamanho=0;
+        int opcao=0;
+        boolean entradaValida = false;
         
-        System.out.print("Digite o tamanho do array: ");
-        tamanho = sc.nextInt();
-        sc.nextLine();
+        do{
+            try{
+                System.out.print("Digite o tamanho do array: ");
+                tamanho = sc.nextInt();
+                sc.nextLine();
+                entradaValida = true;
+            } catch(Exception e){
+                System.out.println("Valor invalido!");
+                sc.nextLine();
+            }
+        }while(!entradaValida);
+        entradaValida = false;
         
-        System.out.print("\n1. Digite valores manualmente."+
-        "\n2. Inicie valores aleatoriamente. "+
-        "\nDigite a opcao: ");
-        
-        opcao = sc.nextInt();
-        sc.nextLine();
+        do{
+            System.out.println("\n1. Digite valores manualmente."+
+            "\n2. Inicie valores aleatoriamente. ");
 
-        // inciando array de acordo com a opcao
-        if(opcao == 1)
-            iniciarManual(tamanho, sc);
-        else if(opcao == 2)
-            iniciarAleatorio(tamanho, -500, 500);
-        else
-            System.out.println("Opcao invalida!");
+            do{
+                try{
+                    System.out.print("Digite a opcao: ");
+                    opcao = sc.nextInt();
+                    entradaValida = true;
+                    sc.nextLine();
+                } catch(Exception e){
+                    System.out.println("Valor invalido!");
+                    sc.nextLine();
+                }
+            }while(!entradaValida);
+
+            // inciando array de acordo com a opcao
+            if(opcao == 1)
+                iniciarManual(tamanho, sc);
+            else if(opcao == 2)
+                iniciarAleatorio(tamanho, -500, 500);
+            else
+                System.out.println("Opcao invalida!");
+        }while(opcao != 1 && opcao != 2);
     }
 
     // iniciando array aleatoriamente sem limites
@@ -73,11 +94,20 @@ public class ManipulaArray {
     // iniciando array manualmente
     private void iniciarManual(int tamanho, Scanner sc){
         array = new int[tamanho];
+        boolean entradaValida = false;
 
         System.out.println();
         for (int i = 0; i < tamanho; i++) {
-            System.out.printf("Digite o "+ i+"º valor: ");
-            array[i] = sc.nextInt();
+            do{
+                try{
+                    System.out.printf("Digite o "+ i+"º valor: ");
+                    array[i] = sc.nextInt();
+                    entradaValida = true;
+                }catch(Exception e){
+                    System.out.println("Valor invalido!");
+                    sc.nextLine();
+                }
+            }while (!entradaValida);
         }
         sc.nextLine();
 

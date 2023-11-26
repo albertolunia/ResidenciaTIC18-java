@@ -12,11 +12,20 @@ public class Adivinhacao {
 
         Scanner sc = new Scanner(System.in);
         int chute = 0;
+        boolean entradaValida = false;
 
         do{
             // lendo chute
-            System.out.print("\nDiga um numero entre 1 e 100: ");
-            chute = sc.nextInt();
+            do{
+                try{
+                    System.out.print("\nDiga um numero entre 1 e 100: ");
+                    chute = sc.nextInt();
+                    entradaValida = true;
+                } catch(Exception e){
+                    System.out.println("Valor invalido!");
+                    sc.nextLine();
+                }
+            }while(!entradaValida);
 
             // comparando chute com numero
             if(chute > numero)
