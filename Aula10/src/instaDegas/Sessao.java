@@ -22,7 +22,7 @@ public class Sessao {
         return sessao;
     }
 
-    public static boolean autenticar(ListaUsuarios usuarios){
+    public static Usuario autenticar(ListaUsuarios usuarios){
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Digite seu email: ");
@@ -31,14 +31,12 @@ public class Sessao {
         String senha = sc.nextLine();
 
         Usuario usuario = usuarios.encontrarUsuario(email);
-        if(usuario.getSenha() == senha){
-            sc.close();
-            return true;
-        }else{
-            sc.close();
-            return false;
-        }
+        sc.close();
 
+        if(usuario.getSenha().equals(senha))
+            return usuario;
+        else
+            return null;
     }
 
     public static int criarId(){

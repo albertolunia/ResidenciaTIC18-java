@@ -77,8 +77,9 @@ public class Usuario {
         idAmigos.add(idAmigo);
     }
 
-    public boolean logar() {
+    public Sessao logar() {
         Sessao sessao = new Sessao(this);
+        return sessao;
 
     }
 
