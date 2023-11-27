@@ -2,6 +2,7 @@ package instaDegas;
 
 import java.util.Scanner;
 public class RedeSocial {
+
     private ListaSessao listaSessao;
     private ListaUsuarios listaUsuario;
 
@@ -18,17 +19,20 @@ public class RedeSocial {
         System.out.println("3 - Criar amizade");
         System.out.println("4 - Desfazer amizade");
         System.out.println("0 - Menu anterior");
-
     }
     
     public static void main(String[] args) throws Exception {
         Scanner nc = new Scanner(System.in);
-        int opcao = 0, opcaoSessao = 0;
+        int opcao = 9999, opcaoSessao = 9999;
 
         do{
             menu();
-            opcao = nc.nextInt();
-            switch(opcao){
+            System.out.print("\nDigite a opção desejada: ");
+            try{
+
+                opcao = nc.nextInt();
+                
+                switch(opcao){
                 case 1:
                     System.out.println("Novo usuário");
                     break;
@@ -39,33 +43,44 @@ public class RedeSocial {
                     System.out.println("Logar");
                     do{
                         menuSessao();
-                        opcaoSessao = nc.nextInt();
-                        switch(opcaoSessao){
-                            case 1:
-                                System.out.println("Listar postagem");
-                                break;
-                            case 2:
-                                System.out.println("Criar postagem");
-                                break;
-                            case 3:
-                                System.out.println("Criar amizade");
-                                break;
-                            case 4:
-                                System.out.println("Desfazer amizade");
-                                break;
-                            case 0:
-                                System.out.println("Menu anterior");
-                                break;
-                            default:
-                                System.out.println("Opção inválida");
+                        System.out.print("\nDigite a opção desejada: ");
+                        try{
+                            opcaoSessao = nc.nextInt();
+                            switch(opcaoSessao){
+                                case 1:
+                                    System.out.println("Listar postagem");
+                                    break;
+                                case 2:
+                                    System.out.println("Criar postagem");
+                                    break;
+                                case 3:
+                                    System.out.println("Criar amizade");
+                                    break;
+                                case 4:
+                                    System.out.println("Desfazer amizade");
+                                    break;
+                                case 0:
+                                    System.out.println("Menu anterior");
+                                    break;
+                                default:
+                                    System.out.println("\nOpção inválida\n");
+                            }
+                        }
+                        catch(Exception e){
+                            System.out.println("\nOpção inválida\n");
+                            nc.next();
                         }
                     }while(opcaoSessao != 0);
                     break;
                 case 0:
-                    System.out.println("Sair");
+                    System.out.println("\nSaindo...");
                     break;
                 default:
-                    System.out.println("Opção inválida");
+                    System.out.println("\nOpção inválida\n");
+            }
+            }catch(Exception e){
+                System.out.println("\nOpção inválida\n");
+                nc.next();
             }
         }while(opcao != 0);
     }
