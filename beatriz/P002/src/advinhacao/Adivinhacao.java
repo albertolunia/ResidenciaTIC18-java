@@ -25,7 +25,7 @@ public class Adivinhacao {
         int palpite;
         boolean acertou = false;
         Adivinhacao adivinha = new Adivinhacao();
-        System.out.println("Jogo Começou " + adivinha.getNumero());
+        System.out.println("Jogo Começou ");
         Scanner sc = new Scanner(System.in);
 
         do {
