@@ -25,3 +25,7 @@ Criamos uma classe `ManipulaArray` contendo os seguintes métodos:
 - `calcularSoma`: Calcula a soma de todos os elementos no array.
 - `encontrarMaiorValor`: Encontra o maior valor no array.
 - `encontrarMenorValor`: Encontra o menor valor no array.
+
+## P003
+- Foi abordado conceitos de `exceções` em java e os seu tipos: verificadas e não verificadas
+- E para fins práticos foi desenvolvido uma class `Calculadora`, no qual gera e exibe a exceção para divisoes por zero
